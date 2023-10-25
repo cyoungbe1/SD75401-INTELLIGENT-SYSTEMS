@@ -1,0 +1,44 @@
+setwd("C:\\univChicago\\IntelligentSystems\\week2\\sqldf\\dataset")
+crashes <- read.csv("crashes.csv")
+roads <- read.csv("roads.csv")
+head(crashes)
+
+#install sqldf package if not installed yet
+install.packages("sqldf")
+
+#if already installed, use the library or check the checkbox in the list of packages on the right hand side
+library("sqldf")
+
+#left join between crash dataset and roads dataset
+join_string <- "select
+                crashes.*
+              , roads.District
+              , roads.Length
+              from crashes
+                left join roads
+                on crashes.Road = roads.Road"
+
+crashes_join_roads <- sqldf(join_string,stringsAsFactors = FALSE)
+
+#see the first 6 data points
+head(crashes_join_roads)
+
+#if you would like to see 8 data points then use teh following command
+head(crashes_join_roads,8)
+
+#to check last 6 data points
+tail(crashes_join_roads)
+
+#perform sql inner join
+join_string2 <- "select
+                crashes.*
+              , roads.District
+              , roads.Length
+              from crashes
+                inner join roads
+                on crashes.Road = roads.Road"
+crashes_join_roads2 <- sqldf(join_string2, stringsAsFactors = FALSE)
+head(crashes_join_roads2)
+
+#to view the entire output, you can also use the 'View' command
+View(crashes_join_roads2)
