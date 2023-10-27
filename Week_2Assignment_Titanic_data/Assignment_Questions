@@ -19,3 +19,5 @@ For the following exercise, please use the ‘Titanic’ dataset provided to you
 9. Using grep, find all passengers with the last name ’Moran’. Make this subset into a new dataframe. Did they all survive? [note: grep is the R command for regular expression]
 
 10. For what proportion of the passengers is the age unknown? Was this proportion higher for 2nd class than 1st and 3rd? Hint: First make a subset of the dataframe where age is missing
+
+
